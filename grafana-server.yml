@@ -1,0 +1,17 @@
+---
+- name: Initial Server Setup
+  user: root
+  hosts: server1
+  vars_files:
+    - server-setup/tasks/vars.yml
+  roles:
+    - server-setup
+
+- name: Install Grafana
+  vars_files:
+    - server-setup/tasks/vars.yml
+  user: "{{ create_user }}"
+  hosts: server1
+  roles:
+    - grafana
+   
